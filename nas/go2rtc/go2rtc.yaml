@@ -1,0 +1,11 @@
+# go2rtc per Argus. Qui non ci sono flussi né password: Argus li registra all'avvio con l'API
+# (PUT /api/streams), restano in memoria. La cartella è montata in sola lettura.
+# Nessuna porta è pubblicata sul NAS: API e RTSP si raggiungono solo dalla rete interna "argus_rete".
+api:
+  listen: ":1984"
+rtsp:
+  listen: ":8554"
+webrtc:
+  listen: ""
+log:
+  level: warn

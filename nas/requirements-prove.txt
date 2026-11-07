@@ -1,0 +1,4 @@
+# Solo per le prove (non servono nel container)
+pytest==9.2.0
+pyflakes==4.1.0
+psutil==7.2.2

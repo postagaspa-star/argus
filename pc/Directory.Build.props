@@ -1,0 +1,42 @@
+<Project>
+  <!--
+    bin/ e obj/ fuori da OneDrive: il Desktop è sincronizzato, e OneDrive che blocca un file
+    mentre lo carica fa fallire la build a caso ("file in uso"). Tutto finisce in
+    %USERPROFILE%\argus-build\pc\<progetto>\. Il pacchetto lo prepara crea-pacchetto.ps1.
+  -->
+  <PropertyGroup>
+    <ArgusCartellaBuild>$(USERPROFILE)\argus-build\pc\</ArgusCartellaBuild>
+    <BaseIntermediateOutputPath>$(ArgusCartellaBuild)$(MSBuildProjectName)\obj\</BaseIntermediateOutputPath>
+    <BaseOutputPath>$(ArgusCartellaBuild)$(MSBuildProjectName)\bin\</BaseOutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Nullable>enable</Nullable>
+    <LangVersion>12</LangVersion>
+    <Version>1.0.0</Version>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Company>Argus</Company>
+    <Product>Argus</Product>
+    <Copyright>Argus</Copyright>
+    <SatelliteResourceLanguages>it</SatelliteResourceLanguages>
+    <!-- Programmi che restano accesi tutto il giorno: niente thread di GC in più. -->
+    <ConcurrentGarbageCollection>false</ConcurrentGarbageCollection>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+
+  <!--
+    Il pacchetto (crea-pacchetto.ps1 passa -p:PubblicazioneArgus=true): self-contained per win-x64, A CARTELLA,
+    mai single-file (Bitdefender aveva messo in quarantena un single-file di Pactum). Niente trimming:
+    WinForms, UI Automation e WebView2 usano la reflection.
+  -->
+  <PropertyGroup Condition="'$(PubblicazioneArgus)' == 'true'">
+    <SelfContained>true</SelfContained>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <PublishSingleFile>false</PublishSingleFile>
+    <PublishTrimmed>false</PublishTrimmed>
+    <PublishDocumentationFile>false</PublishDocumentationFile>
+    <PublishReferencesDocumentationFiles>false</PublishReferencesDocumentationFiles>
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+</Project>

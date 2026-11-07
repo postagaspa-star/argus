@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Lo sblocco d'emergenza: il manifest chiede l'amministratore, quindi Windows chiede la password
+    dell'amministratore (il padre). Scrive C:\ProgramData\Argus\sblocco.json e avvisa il NAS.
+  -->
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Argus.Sblocco</RootNamespace>
+    <AssemblyName>Argus.Sblocco</AssemblyName>
+    <AssemblyTitle>Argus - sblocco d'emergenza</AssemblyTitle>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Argus.Nucleo\Argus.Nucleo.csproj" />
+    <Using Include="Argus.Nucleo" />
+  </ItemGroup>
+
+</Project>

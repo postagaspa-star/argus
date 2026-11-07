@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    La logica di Argus sul PC, senza interfaccia: liste, modalità, regola "senza NAS",
+    calendario, giudizi dei siti, condizioni e motore del modello, client HTTP del contratto.
+    Tutto provato da Argus.Prove.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Argus.Nucleo</RootNamespace>
+    <AssemblyName>Argus.Nucleo</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Argus.Prove" />
+  </ItemGroup>
+
+</Project>

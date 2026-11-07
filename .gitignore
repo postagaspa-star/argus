@@ -1,0 +1,40 @@
+# Segreti e configurazioni locali: mai nel repo
+.env
+.env.*
+!.env.example
+config.json
+!**/config.example.json
+token-pc.txt
+*.pem
+*.key
+
+# Dati, modelli, immagini delle prove
+data/
+nas/data/
+*.db
+*.db-*
+*.sqlite
+*.gguf
+*.onnx
+*.xml.bin
+modelli/
+modelli-prova/
+registrati/
+*.wav
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# .NET
+bin/
+obj/
+*.user
+.vs/
+
+# Pacchetti e log
+*.zip
+*.log

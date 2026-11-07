@@ -1,0 +1,10 @@
+.env
+data/
+modelli/
+**/__pycache__
+**/*.pyc
+.pytest_cache/
+.venv/
+venv/
+README.md
+NOTE-COSTRUTTORE.md

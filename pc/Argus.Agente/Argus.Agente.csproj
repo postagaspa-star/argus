@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Il programma dello studente: legge la finestra in primo piano e il dominio, copre, terminale (WebView2),
+    webcam, voce di ripiego, motore del modello per le foto dubbie. Lo avvia il guardiano nella sessione
+    dell'utente controllato; da solo (per le prove) si usa con l'opzione config seguita da un file.
+  -->
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <!-- Solo per System.Windows.Automation (barra degli indirizzi): nessuna finestra WPF. -->
+    <UseWPF>true</UseWPF>
+    <!-- WinForms e WPF insieme renderebbero ambigui alcuni nomi: gli using sono in GlobalUsings.cs. -->
+    <ImplicitUsings>disable</ImplicitUsings>
+    <RootNamespace>Argus.Agente</RootNamespace>
+    <AssemblyName>Argus.Agente</AssemblyName>
+    <AssemblyTitle>Argus</AssemblyTitle>
+    <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4191.47" />
+    <ProjectReference Include="..\Argus.Nucleo\Argus.Nucleo.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="ui\**\*" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,82 @@
+# Argus sul NAS (Docker Compose, progetto "argus"). Cartella sul NAS: /volume1/docker/Argus-NAS
+#
+# Due container:
+#   argus         -> il cervello: telecamere, visione, regole, diario, registro, coda delle foto
+#                    dubbie, voce, prese. Porta 8700 in casa (LAN): dietro c'è sempre il token del PC.
+#   argus-go2rtc  -> legge le telecamere (RTSP) e porta la voce all'altoparlante delle Tapo.
+#                    Nessuna porta verso fuori: lo usa solo argus. I flussi (con le password) glieli
+#                    registra argus all'avvio, in memoria: sul disco non resta niente.
+#
+# Usa due servizi che esistono già sul NAS, attraverso le loro reti:
+#   sol-decisore:8300  (rete esterna sol-rete)        -> SemIf, le decisioni difficili
+#   lectio-voci:8000   (rete esterna lectio_default)  -> la voce supertonic
+#
+# Le password stanno in .env (mai nel repo; esempio in .env.example). La configurazione delle
+# telecamere sta in data/config.json (si crea da solo al primo avvio, senza telecamere = inattivo).
+# Il token del PC si crea al primo avvio in data/token-pc.txt.
+name: argus
+
+services:
+  argus:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: argus-nas:1.0.0
+    container_name: argus
+    restart: unless-stopped
+    ports:
+      # Sul NAS 8000, 8080, 8100, 8200, 8300, 8400, 8500 e 8600 sono già occupate da altre app.
+      - "8700:8700"
+    env_file:
+      - ./.env
+    environment:
+      ARGUS_DATI: /data
+      ARGUS_MODELLI: /modelli
+    volumes:
+      - ./data:/data
+      - argus-modelli:/modelli
+    networks:
+      - argus
+      - sol-rete
+      - lectio_default
+    depends_on:
+      - argus-go2rtc
+    # Il NAS ha ~3 GB liberi e ci girano altre app (il decisore di Sol usa 3 core quando lavora):
+    # Argus resta sotto 1,6 GB e 2 core.
+    mem_limit: 1600m
+    cpus: 2.0
+    # GPU Intel del N100 per il rilevatore (facoltativo): costruire con GPU_INTEL=1 e togliere i #.
+    # devices:
+    #   - /dev/dri:/dev/dri
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "3"
+
+  argus-go2rtc:
+    # Versione fissata: si aggiorna a mano, non da sola.
+    image: alexxit/go2rtc:1.9.14
+    container_name: argus-go2rtc
+    restart: unless-stopped
+    volumes:
+      - ./go2rtc:/config:ro
+    networks:
+      - argus
+    mem_limit: 256m
+    logging:
+      driver: json-file
+      options:
+        max-size: "2m"
+        max-file: "2"
+
+networks:
+  argus:
+    name: argus_rete
+  sol-rete:
+    external: true
+  lectio_default:
+    external: true
+
+volumes:
+  argus-modelli:

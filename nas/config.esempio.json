@@ -1,0 +1,32 @@
+{
+  "telecamere": [
+    {
+      "id": "camera",
+      "stanza": "camera",
+      "rtsp_principale": "rtsp://${TAPO_UTENTE}:${TAPO_CAMERA_PASSWORD}@${TAPO_CAMERA_IP}:554/stream1",
+      "rtsp_secondario": "rtsp://${TAPO_UTENTE}:${TAPO_CAMERA_PASSWORD}@${TAPO_CAMERA_IP}:554/stream2",
+      "onvif": {"host": "${TAPO_CAMERA_IP}", "porta": 2020, "utente": "${TAPO_UTENTE}", "password_env": "TAPO_CAMERA_PASSWORD"},
+      "altoparlante": "tapo://${TAPO_CLOUD_PASSWORD}@${TAPO_CAMERA_IP}",
+      "tv": false
+    },
+    {
+      "id": "salotto",
+      "stanza": "salotto e cucina",
+      "rtsp_principale": "rtsp://${TAPO_UTENTE}:${TAPO_SALOTTO_PASSWORD}@${TAPO_SALOTTO_IP}:554/stream1",
+      "rtsp_secondario": "rtsp://${TAPO_UTENTE}:${TAPO_SALOTTO_PASSWORD}@${TAPO_SALOTTO_IP}:554/stream2",
+      "onvif": {"host": "${TAPO_SALOTTO_IP}", "porta": 2020, "utente": "${TAPO_UTENTE}", "password_env": "TAPO_SALOTTO_PASSWORD"},
+      "altoparlante": "tapo://${TAPO_CLOUD_PASSWORD}@${TAPO_SALOTTO_IP}",
+      "tv": true
+    }
+  ],
+  "sabato_scuola": false,
+  "patrono": null,
+  "decisore_url": "http://sol-decisore:8300",
+  "voci_url": "http://lectio-voci:8000",
+  "voce": "supertonic",
+  "home_assistant": null,
+  "prese": [],
+  "stanze_studente": ["camera"],
+  "liste_extra": {"lavoro": {"programmi": [], "siti": []}, "studio": {"programmi": [], "siti": []}},
+  "visione": {"fps": 2, "fps_attesa": 0.5, "modello": "dfine_s", "dispositivo": "auto", "thread": 2}
+}

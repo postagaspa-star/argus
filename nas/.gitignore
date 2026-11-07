@@ -1,0 +1,19 @@
+# Argus NAS: niente dati, segreti, modelli o ambienti nel repo
+.env
+data/
+modelli/
+*.onnx
+*.task
+*.db
+*.db-wal
+*.db-shm
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+*.wav
+*.jpg
+*.jpeg
+*.png
+!argus/visione/dati/*.npy

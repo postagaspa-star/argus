@@ -1,0 +1,13 @@
+# Le build finiscono fuori da OneDrive (Directory.Build.props), ma per sicurezza:
+bin/
+obj/
+*.user
+.vs/
+
+# Il pacchetto si ricostruisce con crea-pacchetto.ps1
+pacchetto/
+dist/
+
+# Mai un config vero o un modello nel repo
+config.json
+*.gguf

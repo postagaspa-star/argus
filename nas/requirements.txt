@@ -1,0 +1,21 @@
+# Argus NAS - dipendenze del server (Python 3.12). Versioni fissate, provate sul PC il 07/11/2026.
+# MediaPipe si installa a parte senza le sue dipendenze (requirements-mediapipe.txt): altrimenti
+# tirerebbe dentro opencv-contrib-python (con interfaccia grafica) al posto di quello headless.
+fastapi==0.162.0
+starlette==1.10.0
+uvicorn==0.54.0
+pydantic==2.14.3
+python-multipart==0.0.33
+httpx==0.28.1
+numpy==2.5.4
+opencv-python-headless==5.0.0.93
+onnxruntime==1.31.1
+openvino==2026.4.1
+onvif-zeep==0.2.12
+tzdata==2026.6
+# dipendenze di MediaPipe (quelle che usa davvero)
+absl-py==2.5.1
+attrs==26.1.0
+flatbuffers==25.12.19
+protobuf==7.36.2
+matplotlib==3.11.2

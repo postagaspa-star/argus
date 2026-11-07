@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Il guardiano: servizio di Windows (LocalSystem). Avvia Argus.Agente nella sessione attiva della console solo
+    se l'utente è quello in config (utente_controllato), lo riapre se esce, segue accessi e cambi utente,
+    manda al NAS gli eventi dell'agente e lo sblocco d'emergenza.
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Argus.Guardiano</RootNamespace>
+    <AssemblyName>Argus.Guardiano</AssemblyName>
+    <AssemblyTitle>Argus Guardiano</AssemblyTitle>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.ServiceProcess.ServiceController" Version="8.0.1" />
+    <Using Include="Argus.Nucleo" />
+    <ProjectReference Include="..\Argus.Nucleo\Argus.Nucleo.csproj" />
+  </ItemGroup>
+
+</Project>
