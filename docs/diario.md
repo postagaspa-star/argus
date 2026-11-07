@@ -46,6 +46,11 @@ Decisioni prese insieme, in ordine:
   dopo) diceva "non studio" al 59%. Riscritta come domanda su un fatto ("prima e dopo stava lavorando
   sulla stessa materia?") con opzioni corte: 99% "studio"; col telefono dopo, 47% "non studio" (sotto
   soglia = neutro). Lezione: a SemIf si chiedono fatti, non intenzioni.
+- Ultimi allineamenti tra PC e NAS: il guardiano avvisa con `agente_bloccato` quando l'agente non dà
+  segni di vita e lo riapre; un programma col nome giusto ma senza la firma giusta arriva come
+  `non_riconosciuto:nome.exe` e non vale mai come studio o lavoro; LM Studio su questo PC si chiama
+  `Bionic.exe` e Wisper Ufficio `WisperUfficio.exe`, aggiunti alle liste.
+- Prove: NAS 229 veloci + 5 lente, PC 310 (+2 che vogliono il modello vero). NAS rimesso, sano.
 
 Da fare: comprare le Tapo, configurarle, tarare le soglie con le immagini di casa, installare il
 programma del PC (serve l'amministratore).
