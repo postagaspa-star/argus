@@ -51,6 +51,7 @@ Decisioni prese insieme, in ordine:
   `non_riconosciuto:nome.exe` e non vale mai come studio o lavoro; LM Studio su questo PC si chiama
   `Bionic.exe` e Wisper Ufficio `WisperUfficio.exe`, aggiunti alle liste.
 - Prove: NAS 229 veloci + 5 lente, PC 310 (+2 che vogliono il modello vero). NAS rimesso, sano.
+- Pubblicato su GitHub (repo pubblico), release v1.0.0.
 
 Da fare: comprare le Tapo, configurarle, tarare le soglie con le immagini di casa, installare il
 programma del PC (serve l'amministratore).
