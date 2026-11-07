@@ -90,8 +90,12 @@ per vedere le immagini (RTSP) e per muoverla (ONVIF).
    e `stream2` (bassa risoluzione, usato per guardare). ONVIF risponde sulla porta **2020**.
    `config.esempio.json` è già scritto così.
 4. **Altoparlante**: per far parlare la telecamera serve la password dell'account TP-Link (quello
-   dell'app), in `TAPO_CLOUD_PASSWORD`. Se non la si vuole mettere, si toglie la riga
-   `altoparlante` e le frasi le dice il PC.
+   dell'app), in `TAPO_CLOUD_PASSWORD`. Nelle versioni nuove dell'app va anche acceso, una volta
+   sola, **Io → Servizi di terze parti → Compatibilità con terze parti** (in inglese: Me →
+   Third-Party Services → Third-Party Compatibility): senza, go2rtc può non riuscire ad entrare.
+   Se non si vuole mettere la password, si toglie la riga `altoparlante` e le frasi le dice il PC.
+   Modello consigliato: Tapo C210 (3 MP, gira di 360° e si inclina di 114°). Le Mercusys sembrano
+   uguali, ma l'altoparlante con go2rtc non è confermato e si inclinano solo di 70°.
 5. **Movimento**: Argus muove la telecamera per tenere lo studente al centro e dopo 60 secondi senza
    di lui torna dove era partita. Se gira dalla parte sbagliata, mettere `"inverti_pan": true` (o
    `"inverti_tilt": true`) in quella telecamera. Se il movimento non funziona per 3 volte di fila,
